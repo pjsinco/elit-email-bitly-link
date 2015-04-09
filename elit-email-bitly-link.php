@@ -4,8 +4,8 @@
  * Plugin Name: Elit Email Bitly Link
  * Plugin URI: https://github.com/pjsinco/elit-email-bitly-link
  * Description: Emails a bitly link of a just-published post
- * Version: 0.0.1
- * Author: PJS
+ * Version: 1.0.0
+ * Author: Patrick Sinco
  * Author URI: https://github.com/pjsinco
  * License: GPL2
  */
@@ -79,8 +79,11 @@ function elit_send_email( $response, $post_title ) {
 
       // TODO 
       //  -- change this temp email recipient
+      $recips = array( 
+        'psinco@osteopathic.org',
+      );
       $success = wp_mail( 
-        'psinco@osteopathic.org', ELIT_EMAIL_SUBJECT, $msg, ELIT_EMAIL_HEADERS 
+        $recips, ELIT_EMAIL_SUBJECT, $msg, ELIT_EMAIL_HEADERS 
       );
     }  
   }
