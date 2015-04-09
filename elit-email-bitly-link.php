@@ -40,6 +40,7 @@ define( 'ELIT_EMAIL_HEADERS', 'Content-Type: text/plain' );
  * @return boolean - whether the email was sent
  */
 function elit_email_bitly_link( $new_status, $old_status, $post ) {
+  $msg = $new_status . ', ' . $old_status . ', ' . $post->post_title;
   if ( elit_post_is_newly_published( $new_status, $old_status ) ) {
 
     $post_title = get_the_title ( $post->ID );
@@ -47,7 +48,7 @@ function elit_email_bitly_link( $new_status, $old_status, $post ) {
     $response = wp_remote_get( $request_url );
     
     if ( $response ) {
-      return elit_send_email( $response, $post );
+      elit_send_email( $response, $post );
     } else {
       return false;
     }
@@ -69,7 +70,7 @@ add_action( 'transition_post_status' , 'elit_email_bitly_link', 10, 3 );
  */
 function elit_send_email( $response, $post_title ) {
   $success = false;
-  if ( empty( $response ) !== FALSE ) {
+  if ( empty( $response ) === FALSE ) {
 
     $bitly_link = elit_get_bitly_link_from_response( $response );
 
@@ -85,6 +86,7 @@ function elit_send_email( $response, $post_title ) {
   }
 
   return $success;
+
 }
 
 /**
@@ -199,7 +201,8 @@ function elit_post_is_newly_published( $new_status, $old_status ) {
  * @return string - ASCII 'art' version of the words 'NEW POST'
  */
 function elit_new_post_string() {
-  $str  = " _   _                 ____           _" . PHP_EOL;
+  $str  = PHP_EOL;
+  $str .= " _   _                 ____           _" . PHP_EOL;
   $str .= "| \ | | _____      __ |  _ \ ___  ___| |_" . PHP_EOL;
   $str .= "|  \| |/ _ \ \ /\ / / | |_) / _ \/ __| __|" . PHP_EOL;
   $str .= "| |\  |  __/\ V  V /  |  __/ (_) \__ \ |_" . PHP_EOL;
