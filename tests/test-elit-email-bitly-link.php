@@ -11,6 +11,9 @@ class ElitEmailBitlyLink extends WP_UnitTestCase {
       'post_title' => 'JAOA case report: OMT resolves infant’s obstructed tear duct',
       'post_excerpt' => 'Although more research is needed, OMT is a potential conservative first-line treatment for patients with persistent dacryostenosis.',
     );
+    // our class hooks into transition_post_status;
+    // let's turn off this action so we don't trigger any email-sending
+    remove_all_actions( 'transition_post_status', 10 ); 
     $this->post = get_post( $this->factory->post->create( $args ) );
     $this->token = '12345';
   }

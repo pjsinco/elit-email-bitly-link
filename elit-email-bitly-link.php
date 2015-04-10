@@ -40,10 +40,17 @@ define( 'ELIT_EMAIL_HEADERS', 'Content-Type: text/plain' );
  * @return boolean - whether the email was sent
  */
 function elit_email_bitly_link( $new_status, $old_status, $post ) {
+
+
+  if ( get_post_type( $post )  !=  'post' ) {
+    return false;
+  }
+  
   $msg = $new_status . ', ' . $old_status . ', ' . $post->post_title;
+
   if ( elit_post_is_newly_published( $new_status, $old_status ) ) {
 
-    $post_title = get_the_title ( $post->ID );
+    $post_title = get_the_title( $post->ID );
     $request_url = elit_url_for_bitly_link_save_request( $post_title );
     $response = wp_remote_get( $request_url );
     
@@ -106,13 +113,13 @@ function elit_get_email_message( $link, $post ) {
   $message .= $post_title . PHP_EOL;
   $message .= get_the_permalink( $post->ID ) . PHP_EOL . PHP_EOL . PHP_EOL;
 
-  $message .= '-----*** Kicker ***------' . PHP_EOL;
+  $message .= '--------------*** Kicker ***--------------' . PHP_EOL;
   $message .= elit_get_kicker( $post->ID ). PHP_EOL . PHP_EOL . PHP_EOL;
 
-  $message .= '-----*** Excerpt ***-----' . PHP_EOL;
+  $message .= '--------------*** Excerpt ***-------------' . PHP_EOL;
   $message .= $post->post_excerpt . PHP_EOL . PHP_EOL . PHP_EOL;
 
-  $message .= '-----*** Bitly ***-------' . PHP_EOL;
+  $message .= '--------------*** Bitly ***---------------' . PHP_EOL;
   $message .= $link . PHP_EOL . PHP_EOL . PHP_EOL;
 
   return $message;
@@ -126,7 +133,13 @@ function elit_get_email_message( $link, $post ) {
  */
 function elit_get_kicker( $id ) {
   $meta = get_post_meta( $id );
-  return strtoupper( $meta['elit_kicker'][0] );
+  if ( empty( $meta['elit_kicker'] ) === false ) {
+    return strtoupper( $meta['elit_kicker'][0] );
+  } else {
+    return false;
+
+  }
+  
 }
 
 /**
@@ -204,7 +217,7 @@ function elit_post_is_newly_published( $new_status, $old_status ) {
  * @return string - ASCII 'art' version of the words 'NEW POST'
  */
 function elit_new_post_string() {
-  $str  = PHP_EOL;
+  $str  = " " . PHP_EOL;
   $str .= " _   _                 ____           _" . PHP_EOL;
   $str .= "| \ | | _____      __ |  _ \ ___  ___| |_" . PHP_EOL;
   $str .= "|  \| |/ _ \ \ /\ / / | |_) / _ \/ __| __|" . PHP_EOL;
