@@ -4,7 +4,7 @@
  * Plugin Name: Elit Email Bitly Link
  * Plugin URI: https://github.com/pjsinco/elit-email-bitly-link
  * Description: Emails a bitly link of a just-published post
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: Patrick Sinco
  * Author URI: https://github.com/pjsinco
  * License: GPL2
