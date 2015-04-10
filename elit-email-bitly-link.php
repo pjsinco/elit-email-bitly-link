@@ -27,6 +27,7 @@ require_once( plugin_dir_path( __FILE__ ) .  'inc/http-build-url.php' );
 define( 'ELIT_BITLY_API_URL', 'https://api-ssl.bitly.com' );
 define( 'ELIT_EMAIL_SUBJECT', 'New story posted on The DO' );
 define( 'ELIT_EMAIL_HEADERS', 'Content-Type: text/plain' );
+define( 'MIN_POST_ID', 179511 ); // the last post ID on old site
 
 
 /**
@@ -42,7 +43,8 @@ define( 'ELIT_EMAIL_HEADERS', 'Content-Type: text/plain' );
 function elit_email_bitly_link( $new_status, $old_status, $post ) {
 
 
-  if ( get_post_type( $post )  !=  'post' ) {
+  if ( get_post_type( $post )  !=  'post'  ||
+    $post->ID <= MIN_POST_ID ) {
     return false;
   }
   
