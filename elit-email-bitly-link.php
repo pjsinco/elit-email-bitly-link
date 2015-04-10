@@ -109,8 +109,11 @@ function elit_send_email( $response, $post_title ) {
  */
 function elit_get_email_message( $link, $post ) {
   $post_title = wp_kses_decode_entities( get_the_title( $post->ID ) );
-  
-  $message  = elit_new_post_string() . PHP_EOL . PHP_EOL;
+
+  // for now
+  $message  = elit_beta_notification();
+
+  $message .= elit_new_post_string() . PHP_EOL . PHP_EOL;
 
   $message .= $post_title . PHP_EOL;
   $message .= get_the_permalink( $post->ID ) . PHP_EOL . PHP_EOL . PHP_EOL;
@@ -229,3 +232,14 @@ function elit_new_post_string() {
   return $str;
 }
 
+function elit_beta_notification() {
+  $str  = PHP_EOL;
+  $str .= "************                  ************" . PHP_EOL;
+  $str .= "************       BETA       ************" . PHP_EOL;
+  $str .= "************                  ************" . PHP_EOL;
+  $str .= "       still working out some bugs        " . PHP_EOL;
+  $str .= "         in these announcements!          " . PHP_EOL . PHP_EOL;
+
+  return $str;
+
+}
