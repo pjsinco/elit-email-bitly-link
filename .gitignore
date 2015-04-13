@@ -3,5 +3,4 @@
 *.swm
 config.php
 vendor/*
-
-
+log.txt
