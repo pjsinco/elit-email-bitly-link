@@ -62,8 +62,8 @@ function elit_email_bitly_link( $new_status, $old_status, $post ) {
 
   if ( elit_post_is_newly_published( $new_status, $old_status ) ) {
 
-    $post_title = get_the_title( $post->ID );
-    $request_url = elit_url_for_bitly_link_save_request( $post->ID );
+    $post_title = wp_kses_decode_entities( get_the_title( $post->ID ) );
+    $request_url = elit_url_for_bitly_link_save_request( $post->ID, $post_title );
     $logger->addInfo( 'Request URL', [$request_url] );
     $response = wp_remote_get( $request_url );
 
@@ -187,10 +187,10 @@ function elit_get_bitly_link_from_response( $response ) {
  * 
  * @param string $post_title - the title of the post
  */
-function elit_url_for_bitly_link_save_request( $post_id, $token = ELIT_BITLY_TOKEN ) {
+function elit_url_for_bitly_link_save_request( $post_id, $post_title, $token = ELIT_BITLY_TOKEN ) {
   $parts = array( 
     'path' => '/v3/user/link_save',
-    'query' => elit_query_string_for_link_save( $post_id, $token ),
+    'query' => elit_query_string_for_link_save( $post_id, $post_title, $token ),
   );
 
   return http_build_url( ELIT_BITLY_API_URL, $parts );
@@ -206,10 +206,11 @@ function elit_url_for_bitly_link_save_request( $post_id, $token = ELIT_BITLY_TOK
  * @return string - the url-encoded query string for the URL
  *
  */
-function elit_query_string_for_link_save( $post_id, 
+function elit_query_string_for_link_save( $post_id, $post_title,
     $bitly_token = ELIT_BITLY_TOKEN ) {
   $data = array(
   'access_token' => $bitly_token,
+  'title' => $post_title,
   'longUrl' => elit_format_article_for_url( $post_id ),
   );
   
@@ -225,7 +226,6 @@ function elit_format_article_for_url( $post_id ) {
   );
 
   $url = http_build_url( site_url() . '/', $args );
-  //return urlencode( $url );
   return $url;
   
 }

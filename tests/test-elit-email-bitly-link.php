@@ -63,8 +63,9 @@ class ElitEmailBitlyLink extends WP_UnitTestCase {
   }
 
   public function testElitQueryStringForLinkSave() {
-    $exp = 'access_token=12345&longUrl=http%3A%2F%2Fexample.org%2F%3Fp%3D' . $this->post->ID;
-    $actual = elit_query_string_for_link_save( $this->post->ID, $this->token );
+    $exp = 'access_token=12345&title=JAOA+case+report%3A+OMT+resolves+infant%E2%80%99s+obstructed+tear+duct&longUrl=http%3A%2F%2Fexample.org%2F%3Fp%3D' . 
+      $this->post->ID;
+    $actual = elit_query_string_for_link_save( $this->post->ID, $this->post->post_title, $this->token );
     $this->assertEquals( $exp, $actual );
   }
 
