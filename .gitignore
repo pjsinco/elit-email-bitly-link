@@ -2,5 +2,6 @@
 *.swo
 *.swm
 config.php
+vendor/*
 
 
