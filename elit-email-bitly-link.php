@@ -103,6 +103,8 @@ function elit_send_email( $response, $post_title ) {
       //  -- change this temp email recipient
       $recips = array( 
         'psinco@osteopathic.org',
+        'bjohnson@osteopathic.org',
+        'rraymond@osteopathic.org',
       );
       $success = wp_mail( 
         $recips, ELIT_EMAIL_SUBJECT, $msg, ELIT_EMAIL_HEADERS 
@@ -131,13 +133,13 @@ function elit_get_email_message( $link, $post ) {
   $message .= $post_title . PHP_EOL;
   $message .= get_the_permalink( $post->ID ) . PHP_EOL . PHP_EOL . PHP_EOL;
 
-  $message .= '--------------*** Kicker ***--------------' . PHP_EOL;
+  $message .= '- - - - - - -     KICKER     - - - - - - -' . PHP_EOL;
   $message .= elit_get_kicker( $post->ID ). PHP_EOL . PHP_EOL . PHP_EOL;
 
-  $message .= '--------------*** Excerpt ***-------------' . PHP_EOL;
+  $message .= '- - - - - - -     EXCERPT    - - - - - - -' . PHP_EOL;
   $message .= $post->post_excerpt . PHP_EOL . PHP_EOL . PHP_EOL;
 
-  $message .= '--------------*** Bitly ***---------------' . PHP_EOL;
+  $message .= '- - - - - - -     BITLY      - - - - - - -' . PHP_EOL;
   $message .= $link . PHP_EOL . PHP_EOL . PHP_EOL;
 
   return $message;
