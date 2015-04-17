@@ -255,12 +255,20 @@ function elit_post_is_newly_published( $new_status, $old_status ) {
  * @return string - ASCII 'art' version of the words 'NEW POST'
  */
 function elit_new_post_string() {
+//  $str  = " " . PHP_EOL;
+//  $str .= " _   _                 ____           _" . PHP_EOL;
+//  $str .= "| \ | | _____      __ |  _ \ ___  ___| |_" . PHP_EOL;
+//  $str .= "|  \| |/ _ \ \ /\ / / | |_) / _ \/ __| __|" . PHP_EOL;
+//  $str .= "| |\  |  __/\ V  V /  |  __/ (_) \__ \ |_" . PHP_EOL;
+//  $str .= "|_| \_|\___| \_/\_/   |_|   \___/|___/\__|" . PHP_EOL;
+
   $str  = " " . PHP_EOL;
-  $str .= " _   _                 ____           _" . PHP_EOL;
-  $str .= "| \ | | _____      __ |  _ \ ___  ___| |_" . PHP_EOL;
-  $str .= "|  \| |/ _ \ \ /\ / / | |_) / _ \/ __| __|" . PHP_EOL;
-  $str .= "| |\  |  __/\ V  V /  |  __/ (_) \__ \ |_" . PHP_EOL;
-  $str .= "|_| \_|\___| \_/\_/   |_|   \___/|___/\__|" . PHP_EOL;
+  $str .= " _   _                   ____  _" . PHP_EOL;
+  $str .= "| \ | | _____      __   / ___|| |_ ___  _ __ _   _" . PHP_EOL;
+  $str .= "|  \| |/ _ \ \ /\ / /   \___ \| __/ _ \| '__| | | |" . PHP_EOL;
+  $str .= "| |\  |  __/\ V  V /     ___) | || (_) | |  | |_| |" . PHP_EOL;
+  $str .= "|_| \_|\___| \_/\_/     |____/ \__\___/|_|   \__, |" . PHP_EOL;
+  $str .= "                                             |___/" . PHP_EOL;
 
   return $str;
 }
