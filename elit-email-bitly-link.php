@@ -50,7 +50,7 @@ function elit_email_bitly_link( $new_status, $old_status, $post ) {
 
   $logger = new Logger( 'elit_bitly_logger' );
   $logger->pushHandler( new StreamHandler( plugin_dir_path( __FILE__ ) . 'log.txt' ), Logger::DEBUG  );
-  $logger->addInfo( 'Post ID', [$post->ID] ) ;
+  $logger->addInfo( 'Post ID', array( $post->ID ) ) ;
 
 
   if ( get_post_type( $post )  !=  'post'  ||
@@ -64,7 +64,7 @@ function elit_email_bitly_link( $new_status, $old_status, $post ) {
 
     $post_title = wp_kses_decode_entities( get_the_title( $post->ID ) );
     $request_url = elit_url_for_bitly_link_save_request( $post->ID, $post_title );
-    $logger->addInfo( 'Request URL', [$request_url] );
+    $logger->addInfo( 'Request URL', array( $request_url ) );
     $response = wp_remote_get( $request_url );
 
     $logger->addInfo( $response );
