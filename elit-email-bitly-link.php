@@ -277,9 +277,9 @@ function elit_beta_notification() {
   $str  = PHP_EOL;
   $str .= "* * * * *                        * * * * *" . PHP_EOL;
   $str .= "* * * * * *      B E T A       * * * * * *" . PHP_EOL;
-  $str .= "* * * * *                        * * * * *" . PHP_EOL;
-  $str .= "       still working out some bugs        " . PHP_EOL;
-  $str .= "         in these announcements!          " . PHP_EOL . PHP_EOL;
+  $str .= "* * * * *                        * * * * *" . PHP_EOL . PHP_EOL;
+//  $str .= "       still working out some bugs        " . PHP_EOL;
+//  $str .= "         in these announcements!          " . PHP_EOL . PHP_EOL;
 
   return $str;
 
