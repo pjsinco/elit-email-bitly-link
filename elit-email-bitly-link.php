@@ -104,7 +104,7 @@ function elit_send_email( $response, $post_title ) {
       $recips = array( 
         'psinco@osteopathic.org',
         'bjohnson@osteopathic.org',
-        'rraymond@osteopathic.org',
+        'thedo@osteopathic.org',
       );
       $success = wp_mail( 
         $recips, ELIT_EMAIL_SUBJECT, $msg, ELIT_EMAIL_HEADERS 
@@ -127,7 +127,7 @@ function elit_get_email_message( $link, $post ) {
 
   // for now
   $message  = '';
-  $message .= elit_beta_notification();
+//  $message .= elit_beta_notification();
 
   $message .= elit_new_post_string() . PHP_EOL . PHP_EOL;
 
