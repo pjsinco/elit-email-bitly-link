@@ -104,6 +104,7 @@ function elit_send_email( $response, $post_title ) {
       $recips = array( 
         'psinco@osteopathic.org',
         'bjohnson@osteopathic.org',
+        'mrausa@osteopathic.org',
         'lselby@osteopathic.org',
         'thedo@osteopathic.org',
       );
