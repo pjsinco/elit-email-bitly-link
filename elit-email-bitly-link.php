@@ -6,7 +6,7 @@ require_once ( 'vendor/autoload.php' );
  * Plugin Name: Elit Email Bitly Link
  * Plugin URI: https://github.com/pjsinco/elit-email-bitly-link
  * Description: Emails a bitly link of a just-published post
- * Version: 1.0.2
+ * Version: 1.0.3
  * Author: Patrick Sinco
  * Author URI: https://github.com/pjsinco
  * License: GPL2
@@ -102,11 +102,13 @@ function elit_send_email( $response, $post_title ) {
       // TODO 
       //  -- change this temp email recipient
       $recips = array( 
-        'psinco@osteopathic.org',
-        'bjohnson@osteopathic.org',
-        'ksamano@osteopathic.org',
-        'lselby@osteopathic.org',
         'thedo@osteopathic.org',
+        'schaney@osteopathic.org',
+        'aaltus@osteopathic.org',
+        'ksamano@osteopathic.org',
+        'bjohnson@osteopathic.org',
+        'lselby@osteopathic.org',
+        'psinco@osteopathic.org',
       );
       $success = wp_mail( 
         $recips, ELIT_EMAIL_SUBJECT, $msg, ELIT_EMAIL_HEADERS 
