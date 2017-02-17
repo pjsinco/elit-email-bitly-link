@@ -102,11 +102,13 @@ function elit_send_email( $response, $post_title ) {
       // TODO 
       //  -- change this temp email recipient
       $recips = array( 
-        'psinco@osteopathic.org',
-        'bjohnson@osteopathic.org',
-        'ksamano@osteopathic.org',
-        'lselby@osteopathic.org',
         'thedo@osteopathic.org',
+        'schaney@osteopathic.org',
+        'aaltus@osteopathic.org',
+        'ksamano@osteopathic.org',
+        'bjohnson@osteopathic.org',
+        'lselby@osteopathic.org',
+        'psinco@osteopathic.org',
       );
       $success = wp_mail( 
         $recips, ELIT_EMAIL_SUBJECT, $msg, ELIT_EMAIL_HEADERS 
