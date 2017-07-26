@@ -99,13 +99,12 @@ function elit_send_email( $response, $post_title ) {
     if ( $bitly_link ) {
       $msg = elit_get_email_message( $bitly_link, $post_title );
 
-      // TODO 
-      //  -- change this temp email recipient
       $recips = array( 
-        'thedo@osteopathic.org',
         'schaney@osteopathic.org',
+        'rraymond@osteopathic.org',
         'aaltus@osteopathic.org',
-        'ksamano@osteopathic.org',
+        'vmartinka@osteopathic.org',
+        'spalikuca@osteopathic.org',
         'bjohnson@osteopathic.org',
         'lselby@osteopathic.org',
         'psinco@osteopathic.org',
