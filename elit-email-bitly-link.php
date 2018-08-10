@@ -107,7 +107,6 @@ function elit_send_email( $response, $post_title ) {
         'vmartinka@osteopathic.org',
         'spalikuca@osteopathic.org',
         'bjohnson@osteopathic.org',
-        'lselby@osteopathic.org',
         'psinco@osteopathic.org',
       );
       $success = wp_mail( 
