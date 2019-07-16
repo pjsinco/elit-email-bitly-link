@@ -103,7 +103,6 @@ function elit_send_email( $response, $post_title ) {
         'schaney@osteopathic.org',
         'rraymond@osteopathic.org',
         'aaltus@osteopathic.org',
-        'nfoston@osteopathic.org',
         'vmartinka@osteopathic.org',
         'spalikuca@osteopathic.org',
         'bjohnson@osteopathic.org',
